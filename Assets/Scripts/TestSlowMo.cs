@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
+
+//this is for testing slowmo
+
 public class TestSlowMo : MonoBehaviour
 {
     public Slider slowMoBar;
@@ -34,7 +37,9 @@ public class TestSlowMo : MonoBehaviour
             SlowMo(true);
             slowMoStart = false;
 
-            slowMoBar.value += Time.unscaledDeltaTime;
+        if(slowMoBar.value <= 0)
+        {
+            SlowMo(false);
         }
 
         SlowMoCDW();
@@ -56,13 +61,7 @@ public class TestSlowMo : MonoBehaviour
         }
     }
 
-    void SlowMoCDW()
-    {
-
-        if(slowMoBar.value == 0)
-        {
-            slowMoCool = true;
-            Invoke("ChangeBool", 3);
+            slowMoBar.value += Time.unscaledDeltaTime;
         }
     }
 
